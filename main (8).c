@@ -11,6 +11,22 @@ void big_sum(BigInt res, BigInt a, BigInt b){
   
 }
 */
+void big_sum(BigInt res, BigInt a, BigInt b){
+  int resto = 0;
+	int soma;
+  for (int i = 0; i < 16; i++) {
+    soma = a[i] + b[i] + resto;
+    res[i] = soma & 0xFF;
+    resto = soma >> 8;
+  }
+  
+  printf("Resultado da soma em hexadecimal: \n");
+  for (int i = 0 ; i <= 15; i++) {
+    printf("%02X ", (unsigned char) res[i]);
+  }
+  printf("\n");
+}
+
 
 void big_val(BigInt res, long val) {
   for (int i = 0; i < sizeof(long); i++) {
